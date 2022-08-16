@@ -31,15 +31,12 @@ export function App() {
     setTasks(updatedTask)
   }
 
-  // Esse bloco de código é disparado toda a vez que o array de
-  // tasks sofrer alguma alteração(add, remove, update)
   useEffect(() => {
     if(!isLoading) {
       localStorage.setItem(LOCALSTORAGE_TASKS_KEY, JSON.stringify(tasks))
     }
   }, [tasks])
 
-  // Esse bloco de código é disparado ao carregar a página do usuário
   useEffect(() => {
     const tasksLocal = localStorage.getItem(LOCALSTORAGE_TASKS_KEY)
     tasksLocal && setTasks(JSON.parse(tasksLocal))
